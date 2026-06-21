@@ -1,0 +1,14 @@
+{
+  "name": "project-automation_practice",
+  "version": "1.0.0",
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,jsx,ts,tsx}"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "@cucumber/tag-expressions": "^10.0.0",
+    "cypress": "^15.17.0",
+    "esbuild": "^0.28.1"
+  }
+}
