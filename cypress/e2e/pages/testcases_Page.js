@@ -1,9 +1,9 @@
-class test_cases{
-    tc_Btn='.shop-menu li:nth-child(5)';
+class test_cases {
+    tc_Btn = '.shop-menu li:nth-child(5)';
 
-    clickon_testCases(){
+    clickon_testCases() {
         cy.clickOn(this.tc_Btn);
-        cy.url().should('contains','https://automationexercise.com/test_cases')
+        cy.url().should('contains', 'https://automationexercise.com/test_cases')
     }
 
 
