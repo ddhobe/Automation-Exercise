@@ -5,7 +5,7 @@ class Registration {
     name = '[data-qa="signup-name"]';
     email = '[data-qa="signup-email"]';
     signup_Btn = '[data-qa="signup-button"]';
-    err_msg = '.signup-form>form>p';
+    err_msg = '.signup-form form p';
 
     visit(url) {
         cy.visit(url);

@@ -21,7 +21,11 @@ Then Verify user is navigated to ALL PRODUCTS page successfully
 And Enter product name in search input and click search button
     |ProductName|
     |Sleeveless Unicorn Print Fit & Flare Net Dress - Multi|
-
 Then Verify 'SEARCHED PRODUCTS' is visible
-# Then Verify all the products related to search are visible   
 
+
+Scenario:Verify Subscription in Cart page
+When Click 'Cart' button  
+Then Scroll down to footer and Verify text 'SUBSCRIPTION' 
+And Enter email address in input and click arrow button
+And Verify success message 'You have been successfully subscribed!' is visible

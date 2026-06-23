@@ -2,6 +2,7 @@ import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor"
 import registration from "../pages/registrationPage";
 import test_cases from '../pages/testcases_Page';
 import search_Product from "../pages/searchProduct";
+import subscription from "../pages/subcrip_cartPage"
 
 Given("visit to the web", () => {
     registration.visit("https://automationexercise.com");
@@ -49,3 +50,21 @@ Then("Verify 'SEARCHED PRODUCTS' is visible",()=>{
     search_Product.verify_Text();
 })
 
+
+
+When("Click 'Cart' button",()=>{
+   subscription.clickON_Cart();
+})
+
+Then("Scroll down to footer and Verify text 'SUBSCRIPTION'",()=>{
+    subscription.verify_footer('Subscription');
+})
+
+Then('Enter email address in input and click arrow button',()=>{
+    subscription.enter_email('dattadhobe1111@gmail.com');
+})
+
+Then("Verify success message 'You have been successfully subscribed!' is visible",()=>{
+
+    subscription.verify_msg();
+    })
