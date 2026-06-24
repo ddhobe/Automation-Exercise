@@ -2,7 +2,8 @@ import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor"
 import registration from "../pages/registrationPage";
 import test_cases from '../pages/testcases_Page';
 import search_Product from "../pages/searchProduct";
-import subscription from "../pages/subcrip_cartPage"
+import subscription from "../pages/subcrip_cartPage";
+import productQuantity_InCart from '../pages/productQuantity'
 
 Given("visit to the web", () => {
     registration.visit("https://automationexercise.com");
@@ -29,42 +30,64 @@ Then('Verify user is navigated to test cases page successfully', () => {
     cy.url().should('includes', 'https://automationexercise.com/test_cases')
 })
 
-When("Click on 'Products' button",()=>{
-//searchProduct.product();
-search_Product.product();
+When("Click on 'Products' button", () => {
+    //searchProduct.product();
+    search_Product.product();
 })
 
-Then('Verify user is navigated to ALL PRODUCTS page successfully',()=>{
+Then('Verify user is navigated to ALL PRODUCTS page successfully', () => {
     // searchProduct.verify_productPage();
     search_Product.verify_productPage();
 
 })
-Then ("Enter product name in search input and click search button",(datatable)=>{
-   const data=datatable.hashes();
+Then("Enter product name in search input and click search button", (datatable) => {
+    const data = datatable.hashes();
 
-        search_Product.find_product(data[0].ProductName);
-    
+    search_Product.find_product(data[0].ProductName);
+
 })
 
-Then("Verify 'SEARCHED PRODUCTS' is visible",()=>{
+Then("Verify 'SEARCHED PRODUCTS' is visible", () => {
     search_Product.verify_Text();
 })
 
 
 
-When("Click 'Cart' button",()=>{
-   subscription.clickON_Cart();
+When("Click 'Cart' button", () => {
+    subscription.clickON_Cart();
 })
 
-Then("Scroll down to footer and Verify text 'SUBSCRIPTION'",()=>{
+Then("Scroll down to footer and Verify text 'SUBSCRIPTION'", () => {
     subscription.verify_footer('Subscription');
 })
 
-Then('Enter email address in input and click arrow button',()=>{
+Then('Enter email address in input and click arrow button', () => {
     subscription.enter_email('dattadhobe1111@gmail.com');
 })
 
-Then("Verify success message 'You have been successfully subscribed!' is visible",()=>{
+Then("Verify success message 'You have been successfully subscribed!' is visible", () => {
 
     subscription.verify_msg();
-    })
+})
+
+
+When("Click 'View Product' for any product on home page",()=>{
+    productQuantity_InCart.clickOnProductTab()
+
+})
+
+Then("Verify product detail is opened",()=>{
+    productQuantity_InCart.verifyPoductPage()
+})
+
+Then('increase quantity',()=>{
+    productQuantity_InCart.increaseQuantity("4")
+})
+
+Then("Click 'Add to cart' and then Click 'View Cart' button",()=>{
+    productQuantity_InCart.clickon_AddToCart();
+    
+})
+Then('Verify that product is displayed in cart page with exact quantity',()=>{
+    productQuantity_InCart.verifyQuantity();
+})
